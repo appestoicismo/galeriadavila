@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria da Vila - Soluções Completas em Gestão, Eventos e Fornecimento</title>
+    <meta name="description" content="Transformamos gestão, eventos e fornecimento em soluções simples, rápidas e confiáveis para empresas, condomínios e órgãos públicos.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #1a365d;
+            --secondary-blue: #2c5282;
+            --accent-green: #38a169;
+            --light-gray: #f7fafc;
+            --dark-gray: #2d3748;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: var(--primary-blue);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-green);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            color: var(--white);
+            padding: 120px 2rem 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none"/><path d="M0 50 Q25 25 50 50 T100 50" stroke="rgba(255,255,255,0.05)" fill="none" stroke-width="2"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-green);
+            color: var(--white);
+            padding: 1rem 3rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(56, 161, 105, 0.4);
+            animation: fadeInUp 0.8s ease 0.4s backwards;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(56, 161, 105, 0.6);
+        }
+
+        /* Service Sections */
+        .service-section {
+            padding: 80px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-section:nth-child(even) {
+            background: var(--light-gray);
+        }
+
+        .service-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .service-text h2 {
+            color: var(--primary-blue);
+            font-size: 2.3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-text p {
+            font-size: 1.15rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .features li {
+            padding: 0.8rem 0;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .features li::before {
+            content: '✔';
+            color: var(--accent-green);
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin-right: 1rem;
+        }
+
+        .service-visual {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 350px;
+        }
+
+        .icon-large {
+            font-size: 8rem;
+            opacity: 0.1;
+        }
+
+        /* Social Proof */
+        .social-proof {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 80px 2rem;
+            text-align: center;
+        }
+
+        .social-proof h2 {
+            font-size: 2.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-proof-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .testimonials {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+
+        /* Guarantee Section */
+        .guarantee {
+            padding: 80px 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .guarantee h2 {
+            color: var(--primary-blue);
+            font-size: 2.3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .guarantee p {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .guarantee-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .guarantee-item {
+            padding: 2rem;
+            background: var(--light-gray);
+            border-radius: 10px;
+        }
+
+        .guarantee-item-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .guarantee-item h3 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            background: linear-gradient(135deg, var(--accent-green) 0%, #2f855a 100%);
+            color: var(--white);
+            padding: 80px 2rem;
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .final-cta p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+
+        .cta-button-large {
+            display: inline-block;
+            background: var(--white);
+            color: var(--accent-green);
+            padding: 1.3rem 4rem;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+
+        .cta-button-large:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-gray);
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-info {
+            margin-bottom: 2rem;
+        }
+
+        .footer-info h3 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-contact {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .service-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .service-text h2 {
+                font-size: 1.8rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .testimonials {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-contact {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">Galeria da Vila</div>
+            <ul class="nav-links">
+                <li><a href="#gestao">Gestão</a></li>
+                <li><a href="#eventos">Eventos</a></li>
+                <li><a href="#materiais">Materiais</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Transformamos gestão, eventos e fornecimento em soluções simples, rápidas e confiáveis</h1>
+            <p>Em menos de 30 dias você já sente a diferença: gestão patrimonial organizada, eventos impecáveis e fornecimento de materiais contínuo sem dor de cabeça.</p>
+            <a href="#contato" class="cta-button">Solicite um Orçamento Gratuito</a>
+        </div>
+    </section>
+
+    <!-- Administração de Bens -->
+    <section id="gestao" class="service-section fade-in">
+        <div class="service-content">
+            <div class="service-text">
+                <h2>Gestão Patrimonial que Gera Tranquilidade</h2>
+                <p>Assumimos a administração de imóveis e condomínios para que você tenha valorização patrimonial, segurança e redução de custos. Em até 30 dias, você recebe relatórios digitais claros e controle total sem dor de cabeça.</p>
+                <ul class="features">
+                    <li>Relatórios digitais em tempo real</li>
+                    <li>Redução de custos administrativos</li>
+                    <li>Equipe especializada em imóveis e condomínios</li>
+                </ul>
+                <a href="#contato" class="cta-button">Quero minha Gestão Organizada</a>
+            </div>
+            <div class="service-visual">
+                <span class="icon-large">🏢</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Eventos Corporativos -->
+    <section id="eventos" class="service-section fade-in">
+        <div class="service-content">
+            <div class="service-visual">
+                <span class="icon-large">🎯</span>
+            </div>
+            <div class="service-text">
+                <h2>Eventos Zero Preocupação</h2>
+                <p>Do café da manhã empresarial ao grande congresso, entregamos tudo pronto: planejamento, execução e finalização. Você aprova uma vez, nós cuidamos do resto.</p>
+                <ul class="features">
+                    <li>Planejamento entregue em até 7 dias</li>
+                    <li>Equipe para pequenas e grandes produções</li>
+                    <li>Garantia de execução no padrão combinado</li>
+                </ul>
+                <a href="#contato" class="cta-button">Organize meu Evento</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fornecimento de Materiais -->
+    <section id="materiais" class="service-section fade-in">
+        <div class="service-content">
+            <div class="service-text">
+                <h2>Materiais Sempre no Prazo e com Preço Justo</h2>
+                <p>Linha completa de materiais escolares e de escritório com entrega rápida e reposição programada. Já atendemos batalhões, hospitais, prefeituras e empresas privadas.</p>
+                <ul class="features">
+                    <li>Reposição automática de insumos</li>
+                    <li>Economia de até 30% nos custos</li>
+                    <li>Experiência em licitações públicas</li>
+                </ul>
+                <a href="#contato" class="cta-button">Solicitar Cotação</a>
+            </div>
+            <div class="service-visual">
+                <span class="icon-large">📦</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="social-proof fade-in">
+        <h2>Confiança de quem já é nosso parceiro</h2>
+        <p class="social-proof-subtitle">Desde 2017, já entregamos soluções para clientes do setor público e privado, sempre com compromisso, transparência e pontualidade.</p>
+        <div class="testimonials">
+            <div class="testimonial">
+                <p class="testimonial-text">"A gestão do nosso condomínio melhorou significativamente. Relatórios claros e atendimento sempre disponível."</p>
+                <p class="testimonial-author">— Síndico, Condomínio Residencial</p>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-text">"Organizaram nosso evento corporativo com perfeição. Tudo saiu exatamente como planejado, sem surpresas."</p>
+                <p class="testimonial-author">— Gerente RH, Empresa Privada</p>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-text">"Fornecimento pontual e preços competitivos. Parceria confiável para nosso batalhão."</p>
+                <p class="testimonial-author">— Oficial, Batalhão Militar</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guarantee -->
+    <section class="guarantee fade-in">
+        <h2>Compromisso com Excelência</h2>
+        <p>Se não cumprirmos o prazo ou padrão acordado, ajustamos sem custo adicional até atingir o nível de qualidade prometido.</p>
+        <div class="guarantee-features">
+            <div class="guarantee-item">
+                <div class="guarantee-item-icon">🛡️</div>
+                <h3>Seriedade e Profissionalismo</h3>
+                <p>Compromisso total com seus resultados</p>
+            </div>
+            <div class="guarantee-item">
+                <div class="guarantee-item-icon">🔗</div>
+                <h3>Soluções Integradas</h3>
+                <p>Tudo que você precisa em um só lugar</p>
+            </div>
+            <div class="guarantee-item">
+                <div class="guarantee-item-icon">⚡</div>
+                <h3>Atendimento Flexível</h3>
+                <p>Sob demanda, do seu jeito</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section id="contato" class="final-cta">
+        <h2>Pronto para transformar sua gestão, seu evento ou seu fornecimento?</h2>
+        <p>Solicite agora um orçamento gratuito e descubra como simplificamos sua vida com soluções prontas e confiáveis.</p>
+        <a href="mailto:contato@galeriadavila.com.br" class="cta-button-large">Quero meu Orçamento Gratuito</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <h3>Galeria da Vila - Administração de Bens e Serviços LTDA</h3>
+                <p>Soluções completas para empresas, condomínios e órgãos públicos</p>
+            </div>
+            <div class="footer-contact">
+                <div class="footer-contact-item">
+                    <span>📧</span>
+                    <span>contato@galeriadavila.com.br</span>
+                </div>
+                <div class="footer-contact-item">
+                    <span>📱</span>
+                    <span>(19) 99999-9999</span>
+                </div>
+                <div class="footer-contact-item">
+                    <span>📍</span>
+                    <span>Indaiatuba, São Paulo</span>
+                </div>
+            </div>
+            <p>&copy; 2025 Galeria da Vila. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Header shadow on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.15)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
